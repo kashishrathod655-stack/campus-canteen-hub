@@ -44,8 +44,8 @@ function AuthPage() {
     const email = String(form.get("email") ?? "").trim();
     const password = String(form.get("password") ?? "");
     const next: Errors = {};
-    if (!/^\S+@\S+\.\S+$/.test(email)) next.email = "Enter a valid email address.";
-    if (password.length < 6) next.password = "Password must be at least 6 characters.";
+    if (!/^\S+@\S+\.\S+$/.test(email)) next["email"] = "Enter a valid email address.";
+    if (password.length < 6) next["password"] = "Password must be at least 6 characters.";
     setErrors(next);
     if (Object.keys(next).length) return;
 
@@ -73,11 +73,11 @@ function AuthPage() {
       phone: String(form.get("phone") ?? "").trim(),
     };
     const next: Errors = {};
-    if (data.name.length < 3) next.name = "Please enter your full name.";
-    if (!/^\S+@\S+\.\S+$/.test(data.email)) next.email = "Enter a valid email address.";
-    if (data.password.length < 6) next.password = "Use at least 6 characters.";
-    if (data.roll.length < 4) next.roll = "Enter your college ID / roll number.";
-    if (!/^\d{10}$/.test(data.phone)) next.phone = "Enter a 10-digit phone number.";
+    if (data.name.length < 3) next["name"] = "Please enter your full name.";
+    if (!/^\S+@\S+\.\S+$/.test(data.email)) next["email"] = "Enter a valid email address.";
+    if (data.password.length < 6) next["password"] = "Use at least 6 characters.";
+    if (data.roll.length < 4) next["roll"] = "Enter your college ID / roll number.";
+    if (!/^\d{10}$/.test(data.phone)) next["phone"] = "Enter a 10-digit phone number.";
     setErrors(next);
     if (Object.keys(next).length) return;
 

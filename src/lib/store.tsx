@@ -234,7 +234,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         paymentStatus: paymentMethod === "cash" ? "pending" : "paid",
         createdAt: new Date().toISOString(),
         prepTime: Math.max(5, ...cartDetailed.map((l) => l.food.prepTime)),
-        note,
+        ...(note ? { note } : {}),
       };
       patch((prev) => ({ orders: [order, ...prev.orders], cart: [] }));
       return order;
